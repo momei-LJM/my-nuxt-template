@@ -1,5 +1,7 @@
 <template>
-  <div class="text-red-500">hellow</div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts" setup></script>
