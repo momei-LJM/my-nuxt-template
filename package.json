@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "pnpm generate",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -44,10 +44,6 @@
       "path": "node_modules/cz-git"
     }
   },
-
-
-
-
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,scss,md,vue}": "eslint --fix"
   }
