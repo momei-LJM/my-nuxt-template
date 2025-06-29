@@ -5,4 +5,7 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const a = ref(1);
+a.value = 2;
+</script>
