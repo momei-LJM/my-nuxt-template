@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   },
   hooks: {
     'prerender:routes'({ routes }) {
-      routes.clear() // Do not generate any routes (except the defaults)
+      routes.clear() // 不预渲染路由 只有index/404/200 .html
     },
   },
   elementPlus: {
@@ -38,6 +38,7 @@ export default defineNuxtConfig({
       stylistic: true,
       formatters: {
         css: 'prettier',
+        html: 'prettier',
       },
     },
   },
