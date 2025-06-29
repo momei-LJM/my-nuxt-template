@@ -25,6 +25,9 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: true,
+      formatters: {
+        css: 'prettier',
+      },
     },
   },
   tailwindcss: {},
