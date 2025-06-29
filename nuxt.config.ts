@@ -7,6 +7,8 @@ export default defineNuxtConfig({
     buildAssetsDir: '/static/',
   },
   css: ['~/assets/css/tailwind.css', '~/assets/index.scss'],
+  spaLoadingTemplate: 'app/spa-loading-template.html',
+
   srcDir: 'src',
   future: {
     compatibilityVersion: 4,
