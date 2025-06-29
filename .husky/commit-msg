@@ -1,0 +1,2 @@
+echo "Commit message hook is running!"
+npx --no -- commitlint --edit $1

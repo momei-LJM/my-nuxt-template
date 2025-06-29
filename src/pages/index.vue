@@ -11,3 +11,7 @@
 const a = ref(1)
 a.value = 2
 </script>
+
+<style lang="scss" scoped>
+
+</style>
