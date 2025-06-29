@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxt/eslint'],
   ssr: false,
   devtools: { enabled: true },
+  app: {
+    buildAssetsDir: '/static/',
+  },
   css: ['~/assets/css/tailwind.css', '~/assets/index.scss'],
   srcDir: 'src',
   future: {
@@ -16,6 +19,11 @@ export default defineNuxtConfig({
           additionalData: `@use "~/assets/element/index.scss" as element;`,
         },
       },
+    },
+  },
+  hooks: {
+    'prerender:routes'({ routes }) {
+      routes.clear() // Do not generate any routes (except the defaults)
     },
   },
   elementPlus: {
