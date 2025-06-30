@@ -1,13 +1,22 @@
 <template>
   <div class="text-red-500">
     hellow
-    <el-button type="primary">
+    {{ user.name }}
+    <el-button
+      type="primary"
+      @click="changeName"
+    >
       11
     </el-button>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useBaseStore } from '~/store'
+
+const baseStore = useBaseStore()
+const { user } = storeToRefs(baseStore)
+const { changeName } = baseStore
 const a = ref(1)
 a.value = 2
 </script>

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxt/eslint'],
+  modules: ['@nuxtjs/tailwindcss', '@element-plus/nuxt', '@nuxt/eslint', '@pinia/nuxt'],
   ssr: false,
   devtools: { enabled: true },
   app: {
