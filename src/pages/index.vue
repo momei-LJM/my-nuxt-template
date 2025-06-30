@@ -4,7 +4,7 @@
     {{ user.name }}
     <el-button
       type="primary"
-      @click="changeName"
+      @click="to"
     >
       11
     </el-button>
@@ -17,9 +17,14 @@ import { useBaseStore } from '~/store'
 
 const baseStore = useBaseStore()
 const { user } = storeToRefs(baseStore)
-const { changeName } = baseStore
 const a = ref(1)
 a.value = 2
+
+const router = useRouter()
+
+const to = () => {
+  router.push({ name: 'Landing' })
+}
 </script>
 
 <style lang="scss" scoped>

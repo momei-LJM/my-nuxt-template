@@ -5,6 +5,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     buildAssetsDir: '/static/',
+    rootId: 'app',
+
   },
   css: ['~/assets/css/tailwind.css', '~/assets/index.scss'],
   spaLoadingTemplate: 'app/spa-loading-template.html',
