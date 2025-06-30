@@ -1,3 +1,5 @@
+import { defineStore } from 'pinia'
+
 export const useBaseStore = defineStore('use', () => {
   const user = ref({
     name: 'ljm',

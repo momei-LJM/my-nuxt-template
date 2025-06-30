@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import { useBaseStore } from '~/store'
 
 const baseStore = useBaseStore()
