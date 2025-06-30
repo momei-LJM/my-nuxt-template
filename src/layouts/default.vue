@@ -4,6 +4,8 @@
       <sider-menus />
     </div>
     <div>
+      <nav-bar />
+      <nav-tags />
       <slot />
     </div>
   </div>
