@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
+import { getSessionTag, setSessionTag } from '~/storage'
 
 // 页签项接口
 export interface TabItem {
@@ -12,7 +13,7 @@ export interface TabItem {
 
 export const useTagNavStore = defineStore('tagNav', () => {
   // 存储页签列表
-  const tabsList = ref<TabItem[]>([])
+  const tabsList = ref<TabItem[]>(getSessionTag() || [])
   // 当前激活的页签路径
   const activeTab = ref<string>('')
 
@@ -100,11 +101,9 @@ export const useTagNavStore = defineStore('tagNav', () => {
     }
   }
 
-  // 监听路由变化，更新当前激活页签
-  watch(() => activeTab.value, (newPath) => {
-    // 可以在这里添加路由跳转逻辑
-    console.log('Tab changed to:', newPath)
-  })
+  watch(() => tabsList.value, () => {
+    setSessionTag(tabsList.value)
+  }, { immediate: true, deep: true })
 
   return {
     tabsList,
