@@ -43,15 +43,11 @@ const menusData: TMenu[] = [
 
 export const useLayoutStore = defineStore('layout', () => {
   const menus = ref(menusData)
-  const menuMap = flat2Map<TMenu>('path', menus.value)
-  const activeTags = ref<TMenu[]>([])
+  const menuMap = ref(flat2Map<TMenu>('path', menus.value))
   const isCollapse = ref(false)
   const toggleCollapse = () => {
     isCollapse.value = !isCollapse.value
   }
 
-  const addTags = (path: TMenu) => {
-    activeTags.value = [...activeTags.value, path]
-  }
-  return { isCollapse, toggleCollapse, menus, activeTags, addTags, menuMap }
+  return { isCollapse, toggleCollapse, menus, menuMap }
 })
