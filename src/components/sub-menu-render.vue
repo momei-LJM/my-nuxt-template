@@ -43,17 +43,28 @@
 
 <script setup lang="ts">
 import type { MenuItemRegistered } from 'element-plus'
-import type { TMenu } from '~/store/layout'
+import { useLayoutStore, type TMenu } from '~/store/layout'
+import { useTagNavStore } from '~/store/tagNav'
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
 const { menu } = defineProps<{
   menu: TMenu
 }>()
-
+const { menuMap } = storeToRefs(useLayoutStore())
+const { addTab } = useTagNavStore()
 const router = useRouter()
 const onMenuClick = (v: MenuItemRegistered) => {
   router.push(v.index)
+  const menu = menuMap.value[v.index]
+  addTab(
+    {
+      path: v.index,
+      name: menu?.title || '',
+      title: menu?.title || '',
+      icon: menu?.icon || '',
+      affix: false,
+    })
 }
 </script>
 

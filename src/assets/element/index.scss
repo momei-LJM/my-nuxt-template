@@ -11,5 +11,8 @@ $-colors: (
   $colors: $-colors,
   $border-radius: (
     'base': 2px,
+  ),
+  $tag: (
+    'border-radius': 2px,
   )
 );

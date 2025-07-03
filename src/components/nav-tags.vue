@@ -1,18 +1,19 @@
 <template>
-  <div class="h-[41px] flex items-center">
-    <div
+  <div class="h-[41px] flex items-center gap-[10px] px-[8px]">
+    <el-tag
       v-for="tab in tabsList"
-      :key="tab.path"
-      :class="['tab-item', { active: tab.path === activeTab }]"
+      :key="tab.name"
+      :closable="!tab.affix"
+      class="cursor-pointer"
+      :type="activeTab === tab.path ? 'primary' : 'info' "
+      size="default"
+      :effect="activeTab === tab.path? 'light' : 'plain'"
+
       @click="handleTabClick(tab)"
+      @close="handleCloseTab(tab.path)"
     >
-      <span>{{ tab.title }}</span>
-      <i
-        v-if="!tab.affix"
-        class="el-icon-close"
-        @click.stop="handleCloseTab(tab.path)"
-      />
-    </div>
+      {{ tab.title }}
+    </el-tag>
   </div>
 </template>
 
@@ -39,6 +40,7 @@ const handleTabClick = (tab: TabItem) => {
 // 关闭页签
 const handleCloseTab = (path: string) => {
   tabsStore.closeTab(path)
+  router.push(activeTab.value)
 }
 
 // 监听路由变化
@@ -47,7 +49,7 @@ const watchRouteChange = () => {
     const key = route.path.split('/')[1]
     const menu = menuMap.value[key!]
     tabsStore.addTab({
-      path: `/${menu?.path}`,
+      path: `${menu?.path}`,
       name: menu?.title || '',
       title: menu?.title || '未知页签',
       icon: menu?.icon || '',
