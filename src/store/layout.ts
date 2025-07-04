@@ -45,9 +45,16 @@ export const useLayoutStore = defineStore('layout', () => {
   const menus = ref(menusData)
   const menuMap = ref(flat2Map<TMenu>('path', menus.value))
   const isCollapse = ref(false)
+
+  const breadcrumb = ref<TMenu[]>([])
+  // 导航生成方法
+  const getBreadcrumbByRoute = (path: string): TMenu[] => {
+    const result = findMenuPathByRoute(path, menus.value)
+    return result || []
+  }
   const toggleCollapse = () => {
     isCollapse.value = !isCollapse.value
   }
 
-  return { isCollapse, toggleCollapse, menus, menuMap }
+  return { isCollapse, toggleCollapse, menus, menuMap, getBreadcrumbByRoute, breadcrumb }
 })
