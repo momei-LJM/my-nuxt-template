@@ -3,9 +3,11 @@
     <svg-icon
       v-if="isSub&&menu.icon"
       :icon-class="menu.icon"
-      class="mr-[6px] svg-icon-menu"
+      class="svg-icon-menu shrink-0 mr-[6px]"
     />
-    <span>{{ menu.title }}</span>
+    <span>
+      {{ menu.title }}
+    </span>
   </define-template>
   <el-sub-menu
     v-if="menu.children"
@@ -33,7 +35,7 @@
     <svg-icon
       v-if="menu.icon"
       :icon-class="menu.icon"
-      class="mr-[6px] svg-icon-menu"
+      class="svg-icon-menu shrink-0 mr-[6px]"
     />
     <template #title>
       <reuse-template :menu="menu" />
@@ -73,6 +75,7 @@ const onMenuClick = (v: MenuItemRegistered) => {
   height: 50px;
   .svg-icon-menu {
     color: #006aff;
+    flex-shrink: 0;
   }
   &.is-active {
     box-sizing: border-box;
