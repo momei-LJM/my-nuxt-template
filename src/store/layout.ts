@@ -1,3 +1,5 @@
+import { isBoolean } from 'element-plus/es/utils/types.mjs'
+
 export interface TMenu {
   path?: string
   icon?: string
@@ -52,8 +54,8 @@ export const useLayoutStore = defineStore('layout', () => {
     const result = findMenuPathByRoute(path, menus.value)
     return result || []
   }
-  const toggleCollapse = () => {
-    isCollapse.value = !isCollapse.value
+  const toggleCollapse = (v?: boolean) => {
+    isCollapse.value = isBoolean(v) ? v : !isCollapse.value
   }
 
   return { isCollapse, toggleCollapse, menus, menuMap, getBreadcrumbByRoute, breadcrumb }

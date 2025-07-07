@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full">
-    <div>
+    <div class="border-r-[1px] border-[#eee]">
       <sider-menus />
     </div>
     <div class="flex-1 flex flex-col">
