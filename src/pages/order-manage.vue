@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getApiTest } from '~/api/modules'
+import { getWhaleIdentityInfo } from '~/api/modules/user'
 
-getApiTest()
+getWhaleIdentityInfo()
 </script>

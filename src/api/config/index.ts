@@ -1,16 +1,8 @@
 import qs from 'qs'
+import { requestInterceptor, responseInterceptor } from './Interceptors'
 
-const requestInterceptor = ({ options }: any) => {
-  return options
-}
-
-const responseInterceptor = ({ response }: any) => {
-  if (response._data?.code !== 0) {
-    throw new Error(response._data?.message || '请求失败')
-  }
-}
 const apiFetch = $fetch.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL,
   onRequest: [requestInterceptor],
   onResponse: [responseInterceptor],
 })
@@ -18,7 +10,7 @@ const apiFetch = $fetch.create({
 const createHeaders = () => {
   return {
     'Content-Type': 'application/json',
-    'access-token': 'xxx',
+    'access-token': 'mock-token',
   }
 }
 export class ApiService {
@@ -26,10 +18,10 @@ export class ApiService {
   baseUrl?: string
   constructor(serviceName?: string) {
     this.serviceName = serviceName
-    this.baseUrl = serviceName ? `/api/${serviceName}` : undefined
+    this.baseUrl = serviceName ? `${import.meta.env.VITE_API_URL}/${serviceName}` : undefined
   }
 
-  public get<P, R>(url: string, params?: P) {
+  public get<R>(url: string, params?: any) {
     const serialize = params ? qs.stringify(params, { arrayFormat: 'brackets' }) : params
     const search = serialize ? `${url}?${serialize}` : url
     return apiFetch<R>(search, {
