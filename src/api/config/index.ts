@@ -59,8 +59,6 @@ export class ApiService {
   }
 }
 
-export const http = new ApiService()
-
 export const createService = (serviceName?: string) => {
   return new ApiService(serviceName)
 }
